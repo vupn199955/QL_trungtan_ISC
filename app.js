@@ -16,4 +16,4 @@ app.use(require('./routes/classroom'));
 app.use(require('./routes/cos'));
 app.use(require('./routes/student'));
 
-app.listen('3306');
+app.listen(process.env.PORT || 3000);
