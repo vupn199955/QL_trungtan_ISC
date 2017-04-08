@@ -4,9 +4,10 @@ var mysql = require('mysql');
 var bodyParser = require('body-parser');
 
 var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'iscdb'
+	host: 'sql9.freemysqlhosting.net',
+	user: 'sql9168037',
+	password: 'FjvLILXy5d',
+	database: 'sql9168037'
 });
 
 connection.connect();
@@ -14,8 +15,8 @@ router.use(bodyParser.json());
 
 
 //lay danh sach truong hoc
-router.get('/menu_CThoc',function(req,res){
-    connection.query('SELECT * from study_program', function (err, rows, fields) {
+router.get('/menu_CThoc', function (req, res) {
+	connection.query('SELECT * from study_program', function (err, rows, fields) {
 		if (err) {
 			connection.end();
 			throw err;
@@ -30,11 +31,11 @@ router.get('/menu_CThoc',function(req,res){
 
 
 //xoa truong hoc
-router.delete('/menu_CThoc/:id', function(req,res){
-	
-	var id = req.params.id; 
+router.delete('/menu_CThoc/:id', function (req, res) {
+
+	var id = req.params.id;
 	var sql = "delete from study_program where pro_id = '" + id + "'";
-	
+
 	connection.query(sql, function (err, rows, fields) {
 		if (err) {
 			connection.end();
@@ -44,16 +45,16 @@ router.delete('/menu_CThoc/:id', function(req,res){
 			res.json(rows);
 		}
 	});
-	
+
 });
 
 
 
 
 //them truong hoc
-router.post('/menu_CThoc',function(req,res){
-	var sql = 'insert into study_program(pro_code,pro_name,pro_description,pro_status) values ("'+req.body.pro_code+'","'+req.body.pro_name+'","'+req.body.pro_description+'",1)';
-	
+router.post('/menu_CThoc', function (req, res) {
+	var sql = 'insert into study_program(pro_code,pro_name,pro_description,pro_status) values ("' + req.body.pro_code + '","' + req.body.pro_name + '","' + req.body.pro_description + '",1)';
+
 	connection.query(sql, function (err, rows, fields) {
 		if (err) {
 			connection.end();
@@ -63,16 +64,16 @@ router.post('/menu_CThoc',function(req,res){
 			res.json(rows);
 		}
 	});
-    
+
 });
 
 
 
 //sua truong hoc
-router.put('/menu_CThoc/:id', function(req, res){
+router.put('/menu_CThoc/:id', function (req, res) {
 	var id = req.params.id;
-	var sql = "update study_program set pro_code='" + req.body.pro_code	 + "', pro_name='" + req.body.pro_name + "', pro_description='" + req.body.pro_description + "', pro_status='" + req.body.pro_status + "' where pro_id = '" + id + "'";
-	
+	var sql = "update study_program set pro_code='" + req.body.pro_code + "', pro_name='" + req.body.pro_name + "', pro_description='" + req.body.pro_description + "', pro_status='" + req.body.pro_status + "' where pro_id = '" + id + "'";
+
 	connection.query(sql, function (err, rows, fields) {
 		if (err) {
 			connection.end();
@@ -82,7 +83,7 @@ router.put('/menu_CThoc/:id', function(req, res){
 			res.json(rows);
 		}
 	});
-	
+
 });
 
 module.exports = router;

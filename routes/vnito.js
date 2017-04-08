@@ -3,9 +3,10 @@ var router = express.Router();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'iscdb'
+	host: 'sql9.freemysqlhosting.net',
+	user: 'sql9168037',
+	password: 'FjvLILXy5d',
+	database: 'sql9168037'
 });
 
 connection.connect();
