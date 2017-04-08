@@ -16,5 +16,4 @@ app.use(require('./routes/classroom'));
 app.use(require('./routes/cos'));
 app.use(require('./routes/student'));
 
-app.listen(5000);
-console.log('Server running on port 5000');
+app.listen('https://quanli-tt-isc.herokuapp.com/');
